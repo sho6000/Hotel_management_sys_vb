@@ -4,6 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Public Class frmEmployee
     Dim connectionString As String = "Data Source=TUF-3050\SQLEXPRESS;Initial Catalog=hotel;Integrated Security=True"
     Dim con As New SqlConnection(connectionString)
+    Dim id As Integer
 
     Private Sub frmEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Call display_employee() to populate the ListView with employee data
@@ -23,16 +24,19 @@ Public Class frmEmployee
         If fname = Nothing Or lname = Nothing Or add = Nothing Or num = Nothing Or stat = Nothing Then
             MsgBox("Please Fill All Fields", vbInformation, "Note")
         Else
-            Dim add_emp As New SqlCommand("INSERT INTO tblEmployee(FName,LName,Email,Phone,Address,Status) values ('" &
-                                              fname & "','" &
-                                              lname & "','" &
-                                              email & "','" &
-                                              num & "','" &
-                                              add & "','" &
-                                              stat & "')", con)
-            add_emp.ExecuteNonQuery()
-            add_emp.Dispose()
-            MsgBox("Employee Registered!", vbInformation, "Note")
+            If bttnSave.Text = "&Update" Then ' update selected employee's details
+                Dim update_emp As New SqlCommand("UPDATE tblEmployee SET FName='" & fname & "', LName='" & lname & "', Email='" & email & "', Phone='" & num & "', Address='" & add & "', Status='" & stat & "' WHERE EmpID='" & id & "'", con)
+                update_emp.ExecuteNonQuery()
+                update_emp.Dispose()
+                MsgBox("Employee details updated!", vbInformation, "Note")
+                bttnSave.Text = "&Save"
+                id = 0
+            Else ' add new employee
+                Dim add_emp As New SqlCommand("INSERT INTO tblEmployee(FName,LName,Email,Phone,Address,Status) values ('" & fname & "','" & lname & "','" & email & "','" & num & "','" & add & "','" & stat & "')", con)
+                add_emp.ExecuteNonQuery()
+                add_emp.Dispose()
+                MsgBox("Employee Registered!", vbInformation, "Note")
+            End If
             txtFName.Clear()
             txtLName.Clear()
             txtEmail.Clear()
@@ -43,6 +47,7 @@ Public Class frmEmployee
         con.Close()
         display_employee()
     End Sub
+
 
     Private Sub display_employee()
         con.Open()
@@ -77,6 +82,20 @@ Public Class frmEmployee
         txtStatus.Items.Clear()
     End Sub
 
+    Private Sub lvEmployee_DoubleClick(sender As Object, e As EventArgs) Handles lvEmployee.DoubleClick
+        Dim a As String = MsgBox("Update selected Item?", vbQuestion + vbYesNo, "Update Employee")
+        If a = vbYes Then
+            id = lvEmployee.SelectedItems(0).Text
+            txtFName.Text = lvEmployee.SelectedItems(0).SubItems(1).Text
+            txtLName.Text = lvEmployee.SelectedItems(0).SubItems(2).Text
+            txtAddress.Text = lvEmployee.SelectedItems(0).SubItems(3).Text
+            txtNumber.Text = lvEmployee.SelectedItems(0).SubItems(4).Text
+            txtStatus.Text = lvEmployee.SelectedItems(0).SubItems(5).Text
+
+            TabControlemp.SelectTab(0)
+            bttnSave.Text = "&Update"
+        End If
+    End Sub
 
 
 

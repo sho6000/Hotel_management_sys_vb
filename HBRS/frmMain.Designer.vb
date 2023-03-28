@@ -35,6 +35,8 @@ Partial Class frmMain
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton10 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton12 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton13 = New System.Windows.Forms.ToolStripButton()
@@ -70,8 +72,8 @@ Partial Class frmMain
         Me.RoomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GuestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -80,7 +82,7 @@ Partial Class frmMain
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarCheckIn, Me.ToolStripButton11, Me.toolbarCheckOut, Me.ToolStripSeparator6, Me.toolbarReserve, Me.ToolStripSeparator7, Me.toolbarRoom, Me.ToolStripSeparator8, Me.ToolStripButton10, Me.ToolStripSeparator9, Me.ToolStripButton1, Me.ToolStripSeparator11, Me.ToolStripButton12, Me.ToolStripSeparator10, Me.ToolStripButton13})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarCheckIn, Me.ToolStripButton11, Me.toolbarCheckOut, Me.ToolStripSeparator6, Me.toolbarReserve, Me.ToolStripSeparator7, Me.toolbarRoom, Me.ToolStripSeparator8, Me.ToolStripButton10, Me.ToolStripSeparator9, Me.ToolStripButton1, Me.ToolStripSeparator11, Me.ToolStripButton2, Me.ToolStripSeparator12, Me.ToolStripButton12, Me.ToolStripSeparator10, Me.ToolStripButton13})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(641, 39)
@@ -161,6 +163,20 @@ Partial Class frmMain
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
         Me.ToolStripSeparator9.Size = New System.Drawing.Size(6, 39)
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton1.ToolTipText = "Employee"
+        '
+        'ToolStripSeparator11
+        '
+        Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
+        Me.ToolStripSeparator11.Size = New System.Drawing.Size(6, 39)
         '
         'ToolStripButton12
         '
@@ -395,19 +411,20 @@ Partial Class frmMain
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
-        'ToolStripButton1
+        'ToolStripButton2
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.ToolStripButton2.ToolTipText = "Report"
         '
-        'ToolStripSeparator11
+        'ToolStripSeparator12
         '
-        Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
-        Me.ToolStripSeparator11.Size = New System.Drawing.Size(6, 39)
+        Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
+        Me.ToolStripSeparator12.Size = New System.Drawing.Size(6, 39)
         '
         'frmMain
         '
@@ -481,4 +498,6 @@ Partial Class frmMain
     Friend WithEvents GuestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents ToolStripSeparator11 As ToolStripSeparator
+    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents ToolStripSeparator12 As ToolStripSeparator
 End Class

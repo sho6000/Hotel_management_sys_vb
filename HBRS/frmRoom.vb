@@ -57,6 +57,7 @@ Public Class frmRoom
 
                 Try
                     If dr.Read = False Then
+                        dr.Close()
                         Dim add_room As New SqlCommand("INSERT INTO tblRoom(RoomNumber,RoomType,RoomRate,NoOfOccupancy,Status) values ('" &
                                                  SafeSqlLiteral(num, 2) & "','" &
                                                  SafeSqlLiteral(type, 2) & "','" &
@@ -104,5 +105,9 @@ Public Class frmRoom
             TabControl1.SelectTab(0)
             bttnSave.Text = "&Update"
         End If
+    End Sub
+
+    Private Sub lvRoom_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvRoom.SelectedIndexChanged
+
     End Sub
 End Class
