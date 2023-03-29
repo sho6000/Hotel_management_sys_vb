@@ -22,6 +22,7 @@ Partial Class frmSelectGuest
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSelectGuest))
         Me.lvGuest = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -34,6 +35,7 @@ Partial Class frmSelectGuest
         Me.lvGuest.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvGuest.FullRowSelect = True
         Me.lvGuest.GridLines = True
+        Me.lvGuest.HideSelection = False
         Me.lvGuest.Location = New System.Drawing.Point(12, 22)
         Me.lvGuest.Name = "lvGuest"
         Me.lvGuest.Size = New System.Drawing.Size(459, 211)
@@ -71,6 +73,7 @@ Partial Class frmSelectGuest
         Me.ClientSize = New System.Drawing.Size(483, 257)
         Me.Controls.Add(Me.lvGuest)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSelectGuest"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " Double click to select guest"

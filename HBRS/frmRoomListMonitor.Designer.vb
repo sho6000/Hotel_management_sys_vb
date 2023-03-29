@@ -22,6 +22,7 @@ Partial Class frmRoomListMonitor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRoomListMonitor))
         Me.lvRoom = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -35,6 +36,7 @@ Partial Class frmRoomListMonitor
         Me.lvRoom.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lvRoom.FullRowSelect = True
         Me.lvRoom.GridLines = True
+        Me.lvRoom.HideSelection = False
         Me.lvRoom.Location = New System.Drawing.Point(12, 24)
         Me.lvRoom.Name = "lvRoom"
         Me.lvRoom.Size = New System.Drawing.Size(526, 212)
@@ -77,6 +79,7 @@ Partial Class frmRoomListMonitor
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(550, 247)
         Me.Controls.Add(Me.lvRoom)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmRoomListMonitor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Room List"

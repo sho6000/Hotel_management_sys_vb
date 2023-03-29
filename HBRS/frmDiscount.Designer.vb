@@ -22,6 +22,7 @@ Partial Class frmDiscount
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDiscount))
         Me.lvlDiscount = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -40,6 +41,7 @@ Partial Class frmDiscount
         Me.lvlDiscount.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lvlDiscount.FullRowSelect = True
         Me.lvlDiscount.GridLines = True
+        Me.lvlDiscount.HideSelection = False
         Me.lvlDiscount.Location = New System.Drawing.Point(305, 59)
         Me.lvlDiscount.Name = "lvlDiscount"
         Me.lvlDiscount.Size = New System.Drawing.Size(201, 159)
@@ -81,7 +83,7 @@ Partial Class frmDiscount
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(12, 90)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(95, 16)
+        Me.Label4.Size = New System.Drawing.Size(94, 16)
         Me.Label4.TabIndex = 77
         Me.Label4.Text = "Discount Type"
         '
@@ -103,7 +105,7 @@ Partial Class frmDiscount
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 121)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(115, 16)
+        Me.Label1.Size = New System.Drawing.Size(114, 16)
         Me.Label1.TabIndex = 79
         Me.Label1.Text = "Discount Rate (%)"
         '
@@ -148,6 +150,7 @@ Partial Class frmDiscount
         Me.Controls.Add(Me.txtType)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lvlDiscount)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmDiscount"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)

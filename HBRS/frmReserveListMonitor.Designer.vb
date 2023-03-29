@@ -22,6 +22,7 @@ Partial Class frmReserveListMonitor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReserveListMonitor))
         Me.lvlreserve = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -44,6 +45,7 @@ Partial Class frmReserveListMonitor
         Me.lvlreserve.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12})
         Me.lvlreserve.FullRowSelect = True
         Me.lvlreserve.GridLines = True
+        Me.lvlreserve.HideSelection = False
         Me.lvlreserve.Location = New System.Drawing.Point(12, 22)
         Me.lvlreserve.Name = "lvlreserve"
         Me.lvlreserve.Size = New System.Drawing.Size(797, 273)
@@ -154,6 +156,7 @@ Partial Class frmReserveListMonitor
         Me.Controls.Add(Me.dtOut)
         Me.Controls.Add(Me.dtIn)
         Me.Controls.Add(Me.lvlreserve)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmReserveListMonitor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reserved List"

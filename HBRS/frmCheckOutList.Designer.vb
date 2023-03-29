@@ -22,6 +22,7 @@ Partial Class frmCheckOutList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCheckOutList))
         Me.dtOut = New System.Windows.Forms.DateTimePicker()
         Me.dtIn = New System.Windows.Forms.DateTimePicker()
         Me.lvlcheckin = New System.Windows.Forms.ListView()
@@ -59,6 +60,7 @@ Partial Class frmCheckOutList
         Me.lvlcheckin.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11})
         Me.lvlcheckin.FullRowSelect = True
         Me.lvlcheckin.GridLines = True
+        Me.lvlcheckin.HideSelection = False
         Me.lvlcheckin.Location = New System.Drawing.Point(12, 21)
         Me.lvlcheckin.Name = "lvlcheckin"
         Me.lvlcheckin.Size = New System.Drawing.Size(801, 349)
@@ -136,6 +138,7 @@ Partial Class frmCheckOutList
         Me.Controls.Add(Me.lvlcheckin)
         Me.Controls.Add(Me.dtOut)
         Me.Controls.Add(Me.dtIn)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmCheckOutList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Checked Out List"
