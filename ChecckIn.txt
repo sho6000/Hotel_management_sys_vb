@@ -1,5 +1,5 @@
 Imports System.Data.SqlClient
-
+'Hi
 Public Class frmCheckin
 Dim guestID, roomID, trans_ID As Integer
 
