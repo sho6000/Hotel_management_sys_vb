@@ -25,6 +25,8 @@ Partial Class frmGuest
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGuest))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.code = New System.Windows.Forms.TextBox()
         Me.bttnCancel = New System.Windows.Forms.Button()
         Me.bttnSave = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -69,6 +71,8 @@ Partial Class frmGuest
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label10)
+        Me.TabPage1.Controls.Add(Me.code)
         Me.TabPage1.Controls.Add(Me.bttnCancel)
         Me.TabPage1.Controls.Add(Me.bttnSave)
         Me.TabPage1.Controls.Add(Me.Label8)
@@ -93,6 +97,25 @@ Partial Class frmGuest
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "New Guest"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(158, 195)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(28, 16)
+        Me.Label10.TabIndex = 61
+        Me.Label10.Text = "+91"
+        '
+        'code
+        '
+        Me.code.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.code.Location = New System.Drawing.Point(157, 190)
+        Me.code.Multiline = True
+        Me.code.Name = "code"
+        Me.code.Size = New System.Drawing.Size(30, 25)
+        Me.code.TabIndex = 60
         '
         'bttnCancel
         '
@@ -164,10 +187,11 @@ Partial Class frmGuest
         'txtNumber
         '
         Me.txtNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumber.Location = New System.Drawing.Point(157, 190)
+        Me.txtNumber.Location = New System.Drawing.Point(193, 190)
+        Me.txtNumber.MaxLength = 10
         Me.txtNumber.Multiline = True
         Me.txtNumber.Name = "txtNumber"
-        Me.txtNumber.Size = New System.Drawing.Size(210, 25)
+        Me.txtNumber.Size = New System.Drawing.Size(174, 25)
         Me.txtNumber.TabIndex = 50
         '
         'Label5
@@ -378,4 +402,6 @@ Partial Class frmGuest
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Label10 As Label
+    Friend WithEvents code As TextBox
 End Class

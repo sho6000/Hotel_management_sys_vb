@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text.RegularExpressions
 
 Public Class frmGuest
     Dim connectionString As String = "Data Source=TUF-3050\SQLEXPRESS;Initial Catalog=hotel;Integrated Security=True"
@@ -15,10 +16,17 @@ Public Class frmGuest
         Dim stat As String = "Active"
         Dim remark As String = "Available"
 
-        If fname = Nothing Or mname = Nothing Or lname = Nothing Or add = Nothing Or num = Nothing Then
-            MsgBox("Please Fill All Fields", vbInformation, "Note")
+        If fname = "" Or mname = "" Or lname = "" Or add = "" Or num = "" Then
+            MsgBox("Please Fill All Required Fields", vbInformation, "Note")
         Else
-            Dim add_guest As New SqlCommand("INSERT INTO tblGuest(GuestFName,GuestMName,GuestLName,GuestAddress,GuestContactNumber,GuestGender,GuestEmail,Status,Remarks) values ('" &
+            ' Perform validation on phone number and email
+            If Not IsNumeric(num) OrElse num.Length <> 10 Then
+                MsgBox("Please enter a valid 10-digit phone number", vbInformation, "Note")
+            ElseIf Not (New Regex("^([\w\.\-]+)@(gmail|hotmail)\.com$")).IsMatch(email) Then
+                MsgBox("Please enter a valid email address", vbInformation, "Note")
+            Else
+                ' All required fields are filled in and phone number and email are valid
+                Dim add_guest As New SqlCommand("INSERT INTO tblGuest(GuestFName,GuestMName,GuestLName,GuestAddress,GuestContactNumber,GuestGender,GuestEmail,Status,Remarks) values ('" &
                                               fname & "','" &
                                               mname & "','" &
                                               lname & "','" &
@@ -28,19 +36,21 @@ Public Class frmGuest
                                               email & "','" &
                                               stat & "','" &
                                               remark & "')", con)
-            add_guest.ExecuteNonQuery()
-            add_guest.Dispose()
-            MsgBox("Guest Added!", vbInformation, "Note")
-            txtFName.Clear()
-            txtMName.Clear()
-            txtLName.Clear()
-            txtAddress.Clear()
-            txtNumber.Clear()
-            txtEmail.Clear()
+                add_guest.ExecuteNonQuery()
+                add_guest.Dispose()
+                MsgBox("Guest Added!", vbInformation, "Note")
+                txtFName.Clear()
+                txtMName.Clear()
+                txtLName.Clear()
+                txtAddress.Clear()
+                txtNumber.Clear()
+                txtEmail.Clear()
+            End If
         End If
         con.Close()
         display_guest()
     End Sub
+
 
     Private Sub frmGuest_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         display_guest()
@@ -79,9 +89,61 @@ Public Class frmGuest
         txtAddress.Clear()
         txtNumber.Clear()
         txtEmail.Clear()
+
+
     End Sub
 
+
     Private Sub txtFName_TextChanged(sender As Object, e As EventArgs) Handles txtFName.TextChanged
+
+    End Sub
+
+    'extra validations ------------------------------------------------------------------------------------------------
+
+    Private Sub txtFName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFName.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtLName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLName.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtMName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMName.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtAddress_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAddress.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNumber.KeyPress
+        ' Allow only numeric key presses and the Backspace key
+        If (Not Char.IsDigit(e.KeyChar)) AndAlso (e.KeyChar <> ChrW(Keys.Back)) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
+
+    End Sub
+
+    Private Sub txtNumber_TextChanged(sender As Object, e As EventArgs) Handles txtNumber.TextChanged
 
     End Sub
 End Class

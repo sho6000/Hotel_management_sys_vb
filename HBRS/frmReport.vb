@@ -56,6 +56,16 @@ Public Class frmReport
             Dim document As New Document()
             Dim writer As PdfWriter = PdfWriter.GetInstance(document, New FileStream(saveFileDialog1.FileName, FileMode.Create))
             document.Open()
+
+            'Add the report title
+            Dim titleFont As New Font(BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 18, Font.Bold)
+            Dim titleParagraph As New Paragraph("Generated Report", titleFont)
+            titleParagraph.Alignment = Element.ALIGN_CENTER
+            document.Add(titleParagraph)
+
+            'Add some space
+            document.Add(New Paragraph(" "))
+
             Dim table As New PdfPTable(dgvRevenue.Columns.Count)
 
             'Add the table headers
@@ -82,6 +92,7 @@ Public Class frmReport
             MessageBox.Show("Report saved successfully.", "Report Saved", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
 
     Private Sub bttncsv_Click(sender As Object, e As EventArgs) Handles bttncsv.Click
         'Create a new SaveFileDialog object

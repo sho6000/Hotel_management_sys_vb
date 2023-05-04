@@ -30,6 +30,8 @@ Partial Class frmReport
         Me.dtpEndDate = New System.Windows.Forms.DateTimePicker()
         Me.btnGenerateReport = New System.Windows.Forms.Button()
         Me.bttncsv = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.dgvRevenue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -48,13 +50,13 @@ Partial Class frmReport
         Me.dgvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRevenue.Location = New System.Drawing.Point(12, 82)
         Me.dgvRevenue.Name = "dgvRevenue"
-        Me.dgvRevenue.Size = New System.Drawing.Size(517, 146)
+        Me.dgvRevenue.Size = New System.Drawing.Size(651, 242)
         Me.dgvRevenue.TabIndex = 61
         '
         'btnExportToPDF
         '
         Me.btnExportToPDF.Cursor = System.Windows.Forms.Cursors.AppStarting
-        Me.btnExportToPDF.Location = New System.Drawing.Point(444, 238)
+        Me.btnExportToPDF.Location = New System.Drawing.Point(89, 330)
         Me.btnExportToPDF.Name = "btnExportToPDF"
         Me.btnExportToPDF.Size = New System.Drawing.Size(83, 33)
         Me.btnExportToPDF.TabIndex = 65
@@ -63,21 +65,21 @@ Partial Class frmReport
         '
         'dtpStartDate
         '
-        Me.dtpStartDate.Location = New System.Drawing.Point(12, 53)
+        Me.dtpStartDate.Location = New System.Drawing.Point(56, 52)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(200, 20)
         Me.dtpStartDate.TabIndex = 99
         '
         'dtpEndDate
         '
-        Me.dtpEndDate.Location = New System.Drawing.Point(218, 53)
+        Me.dtpEndDate.Location = New System.Drawing.Point(357, 52)
         Me.dtpEndDate.Name = "dtpEndDate"
-        Me.dtpEndDate.Size = New System.Drawing.Size(200, 20)
+        Me.dtpEndDate.Size = New System.Drawing.Size(197, 20)
         Me.dtpEndDate.TabIndex = 100
         '
         'btnGenerateReport
         '
-        Me.btnGenerateReport.Location = New System.Drawing.Point(344, 239)
+        Me.btnGenerateReport.Location = New System.Drawing.Point(577, 330)
         Me.btnGenerateReport.Name = "btnGenerateReport"
         Me.btnGenerateReport.Size = New System.Drawing.Size(83, 33)
         Me.btnGenerateReport.TabIndex = 101
@@ -87,18 +89,40 @@ Partial Class frmReport
         'bttncsv
         '
         Me.bttncsv.Cursor = System.Windows.Forms.Cursors.AppStarting
-        Me.bttncsv.Location = New System.Drawing.Point(13, 239)
+        Me.bttncsv.Location = New System.Drawing.Point(12, 330)
         Me.bttncsv.Name = "bttncsv"
         Me.bttncsv.Size = New System.Drawing.Size(74, 33)
         Me.bttncsv.TabIndex = 102
         Me.bttncsv.Text = "&CSV"
         Me.bttncsv.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(9, 53)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(44, 16)
+        Me.Label1.TabIndex = 103
+        Me.Label1.Text = "From: "
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(323, 54)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(30, 16)
+        Me.Label2.TabIndex = 104
+        Me.Label2.Text = "To: "
+        '
         'frmReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(542, 284)
+        Me.ClientSize = New System.Drawing.Size(675, 375)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.bttncsv)
         Me.Controls.Add(Me.btnGenerateReport)
         Me.Controls.Add(Me.dtpEndDate)
@@ -124,4 +148,6 @@ Partial Class frmReport
     Friend WithEvents dtpEndDate As DateTimePicker
     Friend WithEvents btnGenerateReport As Button
     Friend WithEvents bttncsv As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

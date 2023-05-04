@@ -266,7 +266,7 @@ Public Class frmReserve
 
         'lblTotal.Text = Val(txtSubTotal.Text) - (Val(txtSubTotal.Text) * Val(lblDiscountRate.Text))
         txtSubTotal.Text = Val(lblTotal.Text) - (Val(lblTotal.Text) * Val(lblDiscountRate.Text))
-        lblAdvancePayment.Text = "Advance payment must be atleast Php " & (Val(txtSubTotal.Text) * 0.5)
+        lblAdvancePayment.Text = "Advance payment must be atleast Rs. " & (Val(txtSubTotal.Text) * 0.5)
         rs.Dispose()
         con.Close()
     End Sub

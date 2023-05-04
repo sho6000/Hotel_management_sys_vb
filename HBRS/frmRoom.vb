@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class frmRoom
     Dim connectionString As String = "Data Source=TUF-3050\SQLEXPRESS;Initial Catalog=hotel;Integrated Security=True"
@@ -110,4 +111,46 @@ Public Class frmRoom
     Private Sub lvRoom_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvRoom.SelectedIndexChanged
 
     End Sub
+
+    ' extras included for validation and can't accept lesser ID number-----------------------------------------------------------------------------------
+
+    Private Sub txtID_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtID.KeyPress
+        If Not Char.IsNumber(e.KeyChar) AndAlso Not e.KeyChar = Convert.ToChar(Keys.Back) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtID_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtID.Validating
+        ' Check if the textbox is empty
+        If String.IsNullOrEmpty(txtID.Text) Then
+            MessageBox.Show("Please enter a value for the text box.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True
+            Return
+        End If
+
+        ' Check if the input is a valid number
+        Dim input As Integer
+        If Not Integer.TryParse(txtID.Text, input) Then
+            MessageBox.Show("Please enter a valid number for the text box.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True
+            Return
+        End If
+
+        ' Check if the input is less than the last room number in the database
+        Dim lastRoomNumber As Integer
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Using command As New SqlCommand("SELECT TOP 1 RoomNumber FROM tblRoom ORDER BY RoomNumber DESC", connection)
+                lastRoomNumber = CInt(command.ExecuteScalar())
+            End Using
+        End Using
+        If input <= lastRoomNumber Then
+            MessageBox.Show($"Please enter a room number greater than {lastRoomNumber}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True
+            Return
+        End If
+
+    End Sub
+
+
 End Class

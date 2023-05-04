@@ -49,6 +49,10 @@ Partial Class frmEmployee
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.code = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabControlemp.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -66,6 +70,9 @@ Partial Class frmEmployee
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label2)
+        Me.TabPage1.Controls.Add(Me.code)
+        Me.TabPage1.Controls.Add(Me.Label10)
         Me.TabPage1.Controls.Add(Me.Label6)
         Me.TabPage1.Controls.Add(Me.txtStatus)
         Me.TabPage1.Controls.Add(Me.bttnCancel)
@@ -159,10 +166,11 @@ Partial Class frmEmployee
         'txtNumber
         '
         Me.txtNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumber.Location = New System.Drawing.Point(157, 183)
+        Me.txtNumber.Location = New System.Drawing.Point(198, 183)
+        Me.txtNumber.MaxLength = 10
         Me.txtNumber.Multiline = True
         Me.txtNumber.Name = "txtNumber"
-        Me.txtNumber.Size = New System.Drawing.Size(210, 25)
+        Me.txtNumber.Size = New System.Drawing.Size(169, 25)
         Me.txtNumber.TabIndex = 50
         '
         'Label5
@@ -246,7 +254,7 @@ Partial Class frmEmployee
         '
         'lvEmployee
         '
-        Me.lvEmployee.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
+        Me.lvEmployee.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader3})
         Me.lvEmployee.FullRowSelect = True
         Me.lvEmployee.GridLines = True
         Me.lvEmployee.HideSelection = False
@@ -301,6 +309,41 @@ Partial Class frmEmployee
         Me.Label9.TabIndex = 58
         Me.Label9.Text = "Employees List"
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(159, 186)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(28, 16)
+        Me.Label10.TabIndex = 62
+        Me.Label10.Text = "+91"
+        '
+        'code
+        '
+        Me.code.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.code.Location = New System.Drawing.Point(157, 183)
+        Me.code.Multiline = True
+        Me.code.Name = "code"
+        Me.code.Size = New System.Drawing.Size(30, 25)
+        Me.code.TabIndex = 63
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(155, 187)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(28, 16)
+        Me.Label2.TabIndex = 64
+        Me.Label2.Text = "+91"
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Email"
+        Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader3.Width = 135
+        '
         'frmEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -347,4 +390,8 @@ Partial Class frmEmployee
     Friend WithEvents Label9 As Label
     Friend WithEvents txtStatus As ComboBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents code As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class

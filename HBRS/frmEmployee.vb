@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text.RegularExpressions
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class frmEmployee
@@ -24,6 +25,22 @@ Public Class frmEmployee
         If fname = Nothing Or lname = Nothing Or add = Nothing Or num = Nothing Or stat = Nothing Then
             MsgBox("Please Fill All Fields", vbInformation, "Note")
         Else
+            ' Check if phone number is valid
+            Dim phoneRegex As New Regex("^\d{10}$")
+            If Not phoneRegex.IsMatch(num) Then
+                MsgBox("Please check either the field is empty or entered number is wrong", vbInformation, "Note")
+                con.Close() ' Close the connection
+                Exit Sub
+            End If
+
+            ' Check if email is valid
+            Dim emailRegex As New Regex("^([\w\.\-]+)@(gmail|hotmail)\.com$")
+            If Not emailRegex.IsMatch(email) Then
+                MsgBox("Please enter your email address", vbInformation, "Note")
+                con.Close() ' Close the connection
+                Exit Sub
+            End If
+
             If bttnSave.Text = "&Update" Then ' update selected employee's details
                 Dim update_emp As New SqlCommand("UPDATE tblEmployee SET FName='" & fname & "', LName='" & lname & "', Email='" & email & "', Phone='" & num & "', Address='" & add & "', Status='" & stat & "' WHERE EmpID='" & id & "'", con)
                 update_emp.ExecuteNonQuery()
@@ -42,7 +59,8 @@ Public Class frmEmployee
             txtEmail.Clear()
             txtNumber.Clear()
             txtAddress.Clear()
-            txtStatus.Items.Clear()
+            txtStatus.SelectedIndex = -1
+            'txtStatus.Items.Clear()
         End If
         con.Close()
         display_employee()
@@ -67,6 +85,7 @@ Public Class frmEmployee
             lv.SubItems.Add(Dt.Rows(indx).Item("Address"))
             lv.SubItems.Add(Dt.Rows(indx).Item("Phone"))
             lv.SubItems.Add(Dt.Rows(indx).Item("Status"))
+            lv.SubItems.Add(Dt.Rows(indx).Item("Email"))
             lvEmployee.Items.Add(lv)
         Next
         rs.Dispose()
@@ -90,6 +109,7 @@ Public Class frmEmployee
             txtLName.Text = lvEmployee.SelectedItems(0).SubItems(2).Text
             txtAddress.Text = lvEmployee.SelectedItems(0).SubItems(3).Text
             txtNumber.Text = lvEmployee.SelectedItems(0).SubItems(4).Text
+            txtEmail.Text = lvEmployee.SelectedItems(0).SubItems(6).Text
             txtStatus.Text = lvEmployee.SelectedItems(0).SubItems(5).Text
 
             TabControlemp.SelectTab(0)
@@ -98,5 +118,35 @@ Public Class frmEmployee
     End Sub
 
 
+    Private Sub txtFName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFName.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtLName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLName.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtAddress_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAddress.KeyPress
+        ' Check if the key pressed is a letter or a backspace
+        If Not Char.IsLetter(e.KeyChar) AndAlso Not e.KeyChar = ControlChars.Back Then
+            ' If the key is not a letter or a backspace, suppress the key press event
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNumber.KeyPress
+        ' Allow only numeric key presses and the Backspace key
+        If (Not Char.IsDigit(e.KeyChar)) AndAlso (e.KeyChar <> ChrW(Keys.Back)) Then
+            e.Handled = True
+        End If
+    End Sub
 
 End Class
