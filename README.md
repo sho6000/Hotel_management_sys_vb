@@ -62,6 +62,7 @@ Once the Hotel Management System is installed, follow these steps to use the sys
 ## Authors
 
 - [@varanofficial](https://github.com/varanofficial)
+- [@sho6000](https://github.com/sho6000)
 
 
 ## Installation
