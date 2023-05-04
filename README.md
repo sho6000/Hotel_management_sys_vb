@@ -80,9 +80,10 @@ Install secondary Assets through VB.NET 2022
 
 ## Screenshots
 
-![App Screenshot](https://www.dropbox.com/s/f06vz4p55n6ao59/Screenshot%202023-05-05%20003133.png?dl=0)
+![App Screenshot](login.png)
 
-![App Screenshot](https://www.dropbox.com/s/bcv0vnfaan4mfwl/Screenshot%202023-05-05%20003206.png?dl=0)
+![App Screenshot](home.png)
+
 
 ## Feedback
 
